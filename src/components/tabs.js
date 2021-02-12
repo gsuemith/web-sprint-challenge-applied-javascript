@@ -24,6 +24,23 @@ const Tabs = (topics) => {
     
     //add each topic to DOM
     topicsDiv.appendChild(tab);
+
+    //stretch
+    //Filters articles by topic
+    //clicking topic again removes filter
+    tab.addEventListener("click", e => {
+      let allCards = document.querySelectorAll('.card');
+      
+      allCards.forEach(card => {
+        if(!card.className.includes(topic) && 
+           !card.className.includes('filtered')){
+          card.classList.add('filtered');
+        }
+        else{
+          card.classList.remove('filtered');
+        }
+      });
+    })
   });
 
   return topicsDiv;
@@ -41,6 +58,7 @@ const tabsAppender = (selector) => {
 
   axios.get(`https://lambda-times-api.herokuapp.com/topics`)
     .then(res => {
+      console.log(res.data.topics)
       entry.appendChild(Tabs(res.data.topics))
     })
     .catch(err => console.log(err))

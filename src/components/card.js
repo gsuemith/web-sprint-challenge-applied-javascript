@@ -38,6 +38,9 @@ const Card = (article) => {
   author.className = "author";
   imgContainer.className = "img-container";
 
+  //Stretch
+  card.classList.add(article.tech)
+
   // Add content
   headline.textContent = article.headline;
   imgAuthor.src = article.authorPhoto;
@@ -59,15 +62,25 @@ const cardAppender = (selector) => {
 
   let url = `https://lambda-times-api.herokuapp.com/articles`;
   axios.get(url).then(res => {
-    
-     // concatenate all articles
+     // spreading all articles
     let articles = [       
-      ...res.data.articles.javascript, 
-      ...res.data.articles.bootstrap,
-      ...res.data.articles.technology,
-      ...res.data.articles.jquery,
-      ...res.data.articles.node
-    ];
+      ...res.data.articles.javascript.map(a => {
+        // adding tech property to object
+        a.tech = 'javascript'; return a;  
+      }), 
+      ...res.data.articles.bootstrap.map(a => {
+        a.tech = 'bootstrap'; return a;
+      }),
+      ...res.data.articles.technology.map(a => {
+        a.tech = 'technology'; return a;
+      }),
+      ...res.data.articles.jquery.map(a => {
+        a.tech = 'jquery'; return a;
+      }),
+      ...res.data.articles.node.map(a => {
+        a.tech = 'node.js'; return a;
+      })
+    ];console.log(articles);
 
     // Add articles to DOM
     articles.forEach(article => {
