@@ -11,19 +11,23 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+  // Create Elements
   let header = document.createElement('div');
   let dateElement = document.createElement('span');
   let titleElement = document.createElement('h1');
   let tempElement = document.createElement('span');
 
+  // Add classnames
   header.className = "header";
   dateElement.className = "date";
   tempElement.classname = "temp";
 
+  // Structure elements
   header.appendChild(dateElement);
   header.appendChild(titleElement);
   header.appendChild(tempElement);
 
+  // Add content
   dateElement.textContent = date;
   titleElement.textContent = title;
   tempElement.textContent = temp;

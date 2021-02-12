@@ -17,6 +17,7 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+  // Create Elements
   let card = document.createElement('div');
   let headline = document.createElement('div');
   let author = document.createElement('author');
@@ -24,17 +25,20 @@ const Card = (article) => {
   let imgAuthor = document.createElement('img');
   let spanAuthor = document.createElement('span');
 
+  // Structure elements
   card.appendChild(headline);
   card.appendChild(author);
   author.appendChild(imgContainer);
   imgContainer.appendChild(imgAuthor);
   author.appendChild(spanAuthor);
 
+  // Add classnames
   card.className = "card";
   headline.className = "headline";
   author.className = "author";
   imgContainer.className = "img-container";
 
+  // Add content
   headline.textContent = article.headline;
   imgAuthor.src = article.authorPhoto;
   spanAuthor.textContent = "By " + article.authorName;
@@ -55,16 +59,17 @@ const cardAppender = (selector) => {
 
   let url = `https://lambda-times-api.herokuapp.com/articles`;
   axios.get(url).then(res => {
-    console.log(res.data.articles)
-    let arrays = res.data.articles;
-    let articles = [
-      ...arrays.javascript, 
-      ...arrays.bootstrap,
-      ...arrays.technology,
-      ...arrays.jquery,
-      ...arrays.node
+    
+     // concatenate all articles
+    let articles = [       
+      ...res.data.articles.javascript, 
+      ...res.data.articles.bootstrap,
+      ...res.data.articles.technology,
+      ...res.data.articles.jquery,
+      ...res.data.articles.node
     ];
 
+    // Add articles to DOM
     articles.forEach(article => {
       entry.appendChild(Card(article));
     })

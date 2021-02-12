@@ -16,11 +16,13 @@ const Tabs = (topics) => {
   let topicsDiv = document.createElement("div");
   topicsDiv.className = "topics";
 
+  // create tab element from each topic 
   topics.forEach(topic => {
     let tab = document.createElement("div");
     tab.className = "tab";
     tab.textContent = topic;
     
+    //add each topic to DOM
     topicsDiv.appendChild(tab);
   });
 
