@@ -43,7 +43,7 @@ const tabsAppender = (selector) => {
     .then(res => {
       entry.appendChild(Tabs(res.data.topics))
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log("Error:", err))
 }
 
 export { Tabs, tabsAppender }

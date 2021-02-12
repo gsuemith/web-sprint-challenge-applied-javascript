@@ -74,6 +74,7 @@ const cardAppender = (selector) => {
       entry.appendChild(Card(article));
     })
   })
+  .catch(err => console.log("Error:", err));
 }
 
 export { Card, cardAppender }
