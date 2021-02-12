@@ -80,7 +80,7 @@ const cardAppender = (selector) => {
       ...res.data.articles.node.map(a => {
         a.tech = 'node.js'; return a;
       })
-    ];console.log(articles);
+    ];
 
     // Add articles to DOM
     articles.forEach(article => {
