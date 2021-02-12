@@ -27,7 +27,7 @@ const Tabs = (topics) => {
 
     //stretch
     //Filters articles by topic
-    //clicking topic again removes filter
+    //clicking topic again removes filter *still buggy*
     tab.addEventListener("click", e => {
       let allCards = document.querySelectorAll('.card');
       
